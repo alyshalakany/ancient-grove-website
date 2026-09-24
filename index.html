@@ -76,13 +76,13 @@ input,textarea{font-family:"Public Sans",sans-serif;}
   <!-- ABOUT -->
   <div id="about" style="padding: 96px 24px; display: flex; justify-content: center; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background-color: #8a6420">
     <div class="ag-split" style="max-width: 1180px; width: 100%; display: flex; gap: 72px; align-items: flex-start;">
-      <div style="width: 46%; display: flex; flex-direction: column; gap: 18px; position: sticky; top: 96px;">
+      <div style="width: 46%; display: flex; flex-direction: column; gap: 18px;">
         <div class="eyebrow" style="color: #fbe7c8">About</div>
         <h2 style="font-size: 38px; line-height: 1.15; color: #fbe7c8">The palm has always known how to endure.</h2>
       </div>
       <div style="width: 54%; display: flex; flex-direction: column; gap: 22px; font-size: 17px; line-height: 1.75; color: var(--ink);">
         <p style="color: #fbe7c8">Ancient Grove is a multinational company specialized in palm dates. We build enduring brands around a single, humble fruit, turning centuries of farming knowledge into nutritious products delivered to people all over the world.</p>
-        <p style="font-family: 'Fraunces', serif; font-style: italic; font-size: 20px; color: #fbe7c8; border-left: 3px solid var(--gold); padding-left: 20px">"The palm tree is like a noble person, for it bears fruit generously and withstands the harshest conditions. And when it dies, it's wood still gives warmth, as a noble person would continue to give even after their death" - Al Jahiz, 9th century scholar and lover of dates.</p>
+        <p style="font-family: 'Fraunces', serif; font-style: italic; font-size: 20px; color: #fbe7c8; border-left: 3px solid var(--gold); padding-left: 20px">"The date palm is the most noble of plants, standing steadfast against hardship, giving of its sweet treasure without stint and sustaining life where nothing else endures" - Al Jahiz, 9th century scholar and lover of dates.</p>
       </div>
     </div>
   </div>
@@ -176,9 +176,12 @@ input,textarea{font-family:"Public Sans",sans-serif;}
       <h2 style="font-size: 32px; color: var(--cream-text);">Get in touch.</h2>
       <p style="font-size: 16px; color: rgba(251,231,200,0.78); max-width: 460px; line-height: 1.6;">Have a question about our brands, our farms, or a partnership? We'd love to hear from you.</p>
 
-      <div id="ag-contact-thanks" style="display: none; margin-top: 18px; padding: 14px 22px; background: rgba(196,150,54,0.18); border: 1px solid var(--gold); border-radius: 12px; color: var(--cream-text); font-weight: 600; font-size: 15px;">Thank you — we'll be in touch soon.</div>
-
-      <form id="ag-contact-form" style="margin-top: 18px; display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 460px; text-align: left;">
+      <form id="ag-contact-form" action="https://formsubmit.co/contactus@ancient-grove.com" method="POST" style="margin-top: 18px; display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 460px; text-align: left;">
+        <input type="hidden" name="_subject" value="New message from the Ancient Grove website">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://ancient-grove.com/#contact">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
         <div>
           <label for="ag-contact-name" style="display: block; font-size: 13px; font-weight: 600; color: rgba(251,231,200,0.75); margin-bottom: 6px;">Name</label>
           <input id="ag-contact-name" name="name" type="text" required placeholder="Your name" style="width: 100%; padding: 12px 16px; border-radius: 10px; border: 1px solid rgba(251,231,200,0.35); background: rgba(255,255,255,0.06); color: var(--cream-text); font-size: 15px;">
@@ -225,20 +228,5 @@ input,textarea{font-family:"Public Sans",sans-serif;}
 
 </div>
 
-<script>
-// Contact form: shows a thank-you message on submit.
-// NOTE: this does not send an email by itself — see the README for how to
-// wire it to a real inbox (Formspree, etc.) or to mailto fallback.
-document.getElementById('ag-contact-form').addEventListener('submit', function (e) {
-  e.preventDefault();
-  var form = e.target;
-  var name = form.name.value, email = form.email.value, message = form.message.value;
-  var subject = encodeURIComponent('Website inquiry from ' + name);
-  var body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');
-  window.location.href = 'mailto:contactus@ancient-grove.com?subject=' + subject + '&body=' + body;
-  form.style.display = 'none';
-  document.getElementById('ag-contact-thanks').style.display = 'block';
-});
-</script>
 </body>
 </html>
